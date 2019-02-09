@@ -16,20 +16,25 @@ roundScore = 0;
 activePlayer = 1;
 
 const diceImage = document.querySelector(".dice");
-
 diceImage.style.display = "none";
+
+document.querySelector("#score-0").textContent = "0";
+document.querySelector("#score-1").textContent = "0";
+
 
 const btnRoll = document.querySelector(".btn-roll");
 
 btnRoll.addEventListener("click", () => {
-  const playerCurrentScore = document.querySelector("#current-" + activePlayer);
+  let playerCurrentScore = document.querySelector("#current-" + activePlayer);
   dice = Math.floor(Math.random() * 6) + 1;
   diceImage.setAttribute("src", `images/dice-${dice}.png`);
   diceImage.style.display = "block";
   if (dice !== 1) {
-    let scoreInt = parseInt(playerCurrentScore.textContent) + dice;
-    playerCurrentScore.textContent = scoreInt;
+    roundScore += dice;
+    playerCurrentScore.textContent = roundScore;
   } else {
+    roundScore = 0;
     playerCurrentScore.textContent = 0;
+    activePlayer ? activePlayer = 0 : activePlayer = 1;
   }
 })
