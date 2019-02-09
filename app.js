@@ -37,8 +37,9 @@ btnRoll.addEventListener("click", () => {
   } else {
     roundScore = 0;
     playerCurrentScore.textContent = 0;
-    document.querySelector(`.player-${activePlayer}-panel`).classList.remove("active");
+    document.querySelector(`.player-${activePlayer}-panel`).classList.toggle("active");
     activePlayer ? activePlayer = 0 : activePlayer = 1;
-    document.querySelector(`.player-${activePlayer}-panel`).classList.add("active");
+    document.querySelector(`.player-${activePlayer}-panel`).classList.toggle("active");
+    diceImage.style.display = "none";
   }
 })
