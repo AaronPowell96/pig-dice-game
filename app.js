@@ -13,13 +13,15 @@ let scores, roundScore, activePlayer, dice;
 
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 const diceImage = document.querySelector(".dice");
 diceImage.style.display = "none";
 
 document.querySelector("#score-0").textContent = "0";
 document.querySelector("#score-1").textContent = "0";
+document.querySelector("#current-1").textContent = "0";
+document.querySelector("#current-0").textContent = "0";
 
 
 const btnRoll = document.querySelector(".btn-roll");
@@ -35,6 +37,8 @@ btnRoll.addEventListener("click", () => {
   } else {
     roundScore = 0;
     playerCurrentScore.textContent = 0;
+    document.querySelector(`.player-${activePlayer}-panel`).classList.remove("active");
     activePlayer ? activePlayer = 0 : activePlayer = 1;
+    document.querySelector(`.player-${activePlayer}-panel`).classList.add("active");
   }
 })
