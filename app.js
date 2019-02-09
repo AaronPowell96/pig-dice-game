@@ -15,12 +15,6 @@ scores = [0, 0];
 roundScore = 0;
 activePlayer = 1;
 
-dice = () => {
-  return Math.floor(Math.random() * 6) + 1;
-}
-
-const playerCurrentScore = document.querySelector("#current-" + activePlayer);
-
 const diceImage = document.querySelector(".dice");
 
 diceImage.style.display = "none";
@@ -28,11 +22,12 @@ diceImage.style.display = "none";
 const btnRoll = document.querySelector(".btn-roll");
 
 btnRoll.addEventListener("click", () => {
-  let randomNum = dice();
-  diceImage.setAttribute("src", `images/dice-${randomNum}.png`);
+  const playerCurrentScore = document.querySelector("#current-" + activePlayer);
+  dice = Math.floor(Math.random() * 6) + 1;
+  diceImage.setAttribute("src", `images/dice-${dice}.png`);
   diceImage.style.display = "block";
-  if (randomNum !== 1) {
-    let scoreInt = parseInt(playerCurrentScore.textContent) + randomNum;
+  if (dice !== 1) {
+    let scoreInt = parseInt(playerCurrentScore.textContent) + dice;
     playerCurrentScore.textContent = scoreInt;
   } else {
     playerCurrentScore.textContent = 0;
