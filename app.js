@@ -87,3 +87,16 @@ function newGame() {
   document.querySelector(".player-1-panel").classList.remove("active");
   document.querySelector(".player-0-panel").classList.add("active");
 }
+
+function array() {
+  return [0, 1, 2, 3, 4];
+}
+
+for (let n in array()) {
+  console.log(n);
+}
+
+let object = { a: 1, b: 2, c: 3 };
+
+for (let value in object)
+  console.log(value, object[value]);
